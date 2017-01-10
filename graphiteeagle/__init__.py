@@ -13,7 +13,6 @@ Graphite Eagle
 """
 
 from .constants import COMMAND, EAGLE_PORT  # NOQA
-from .functions import get_instantaneous_demand  # NOQA
 from .classes import CarbonHost, EagleHost  # NOQA
 
 __author__ = 'Greg Albrecht <oss@undef.net>'
