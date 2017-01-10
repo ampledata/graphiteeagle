@@ -4,6 +4,7 @@
 """Graphite Eagle Commands."""
 
 import argparse
+import time
 
 import graphiteeagle
 
@@ -31,10 +32,12 @@ def cli():
     carbon_host = graphiteeagle.CarbonHost(opts.host, opts.port)
     carbon_host.connect()
 
+    def _cb(d): return carbon_host('eagle.current_demand', d, time.time())
+
     eagle_host = graphiteeagle.EagleHost(opts.eagle)
     eagle_host.connect()
 
-    eagle_host.get_current_demand(carbon_host.collect)
+    eagle_host.get_current_demand(_cb)
 
 
 if __name__ == '__main__':
