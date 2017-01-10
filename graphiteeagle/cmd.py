@@ -32,7 +32,7 @@ def cli():
     carbon_host = graphiteeagle.CarbonHost(opts.host, opts.port)
     carbon_host.connect()
 
-    def _cb(d): return carbon_host('eagle.current_demand', d, time.time())
+    def _cb(d): return carbon_host.collect('eagle.current_demand', d, time.time())
 
     eagle_host = graphiteeagle.EagleHost(opts.eagle)
     eagle_host.connect()
