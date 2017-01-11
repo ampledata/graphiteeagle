@@ -26,6 +26,9 @@ def cli():
     parser.add_argument(
         '-e', '--eagle', help='Eagle Host'
     )
+    parser.add_argument(
+        '-u', '--interval', help='Interval', default=300
+    )
 
     opts = parser.parse_args()
 
@@ -37,7 +40,9 @@ def cli():
     eagle_host = graphiteeagle.EagleHost(opts.eagle)
     eagle_host.connect()
 
-    eagle_host.get_current_demand(_cb)
+    while 1:
+        eagle_host.get_current_demand(_cb)
+        time.sleep(opts.interval)
 
 
 if __name__ == '__main__':
