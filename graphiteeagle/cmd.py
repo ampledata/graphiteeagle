@@ -27,7 +27,7 @@ def cli():
         '-e', '--eagle', help='Eagle Host'
     )
     parser.add_argument(
-        '-i', '--interval', help='Interval', default=300
+        '-i', '--interval', help='Interval', default=300, type=float
     )
 
     opts = parser.parse_args()
